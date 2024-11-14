@@ -46,14 +46,14 @@ export async function POST(req) {
   }
 }
 
-## How to invoke
+
 
 /*
     let webpBlob;
     const formData = new FormData();
     formData.append("file", file);
     try {
-      /* for a next js applicaition with App router */
+      // for a next js applicaition with App router 
       const response = await fetch('/pages/api/', {
         method: 'POST',
         body: formData, 
