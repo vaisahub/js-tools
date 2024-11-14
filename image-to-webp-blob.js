@@ -16,6 +16,7 @@ export async function POST(req) {
     
     // Retrieve the file from the form data (adjust the key name if needed)
     const file = formData.get('file'); // The 'file' key should match the form field name
+    const quality = formData.get('quality'); // The 'quality' key should match the form field name
 
     // Check if a file was uploaded; if not, return a 400 error response
     if (!file) {
@@ -27,7 +28,10 @@ export async function POST(req) {
 
     // Use sharp to process the image and convert it to WebP format
     const webpBuffer = await sharp(fileBuffer)
-      .toFormat('webp')  // Convert to WebP format
+      .toFormat('webp',{
+        quality: quality,   // Lower quality (50) for smaller file size (adjust quality as needed)
+        effort: 6,     // Control encoding speed vs. file size (higher effort = smaller file)
+      })  // Convert to WebP format
       .toBuffer();       // Return the result as a Buffer
 
     // Send the processed WebP image back in the response with the correct headers
