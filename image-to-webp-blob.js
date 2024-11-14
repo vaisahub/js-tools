@@ -45,3 +45,26 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Failed to process image' }, { status: 500 });
   }
 }
+
+## How to invoke
+
+/*
+    let webpBlob;
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      /* for a next js applicaition with App router */
+      const response = await fetch('/pages/api/', {
+        method: 'POST',
+        body: formData, 
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to convert image');
+      }
+
+      const webpImageBlob = await response.blob();
+      const webpImageUrl = URL.createObjectURL(webpImageBlob);
+      webpBlob = webpImageBlob;
+      console.log(webpImageBlob, webpImageUrl);
+*/
