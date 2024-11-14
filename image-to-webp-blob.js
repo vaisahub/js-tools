@@ -29,7 +29,7 @@ export async function POST(req) {
     // Use sharp to process the image and convert it to WebP format
     const webpBuffer = await sharp(fileBuffer)
       .toFormat('webp',{
-        quality: quality,   // Lower quality (50) for smaller file size (adjust quality as needed)
+        quality: Number(quality),  // Lower quality (50) for smaller file size (adjust quality as needed)
         effort: 6,     // Control encoding speed vs. file size (higher effort = smaller file)
       })  // Convert to WebP format
       .toBuffer();       // Return the result as a Buffer
